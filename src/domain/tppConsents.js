@@ -42,10 +42,10 @@ const { getStackOrInspect } = require('../lib/util.js')
 const hubNameRegex = HeaderValidation.getHubNameRegex(Config.HUB_NAME)
 const responseType = Enum.Http.ResponseTypes.JSON
 const EndpointPaths = {
-    TPP_CONSENTS_POST: '/tppConsents',
-    TPP_CONSENTS_GET: '/tppConsents/{{ID}}',
-    TPP_CONSENTS_DELETE: '/tppConsents/{{ID}}', 
-    TPP_CONSENTS_PUT_ERROR: '/tppConsents/{{ID}}/error',
+  TPP_CONSENTS_POST: '/tppConsents',
+  TPP_CONSENTS_GET: '/tppConsents/{{ID}}',
+  TPP_CONSENTS_DELETE: '/tppConsents/{{ID}}',
+  TPP_CONSENTS_PUT_ERROR: '/tppConsents/{{ID}}/error'
 }
 /**
  * Forwards tppConsents endpoint requests to destination FSP for processing
@@ -68,7 +68,7 @@ const forwardTppConsents = async (path, headers, method, params, payload, span =
     if (!endpoint) {
       // we didnt get an endpoint for the payee dfsp!
       // make an error callback to the initiator
-      throw ErrorHandler.Factory.createFSPIOPError(ErrorHandler.Enums.FSPIOPErrorCodes.DESTINATION_FSP_ERROR, `No ${Enum.EndPoints.FspEndpointTypes.FSPIOP_CALLBACK_URL_TPP_REQ_SERVICE} endpoint found for tppConsents ${consentId} for ${Enum.Http.Headers.FSPIOP.DESTINATION}`, method.toUpperCase() !== Enum.Http.RestMethods.GET && method.toUpperCase() !== Enum.Http.RestMethods.DELETE ? payloadLocal : undefined , source)
+      throw ErrorHandler.Factory.createFSPIOPError(ErrorHandler.Enums.FSPIOPErrorCodes.DESTINATION_FSP_ERROR, `No ${Enum.EndPoints.FspEndpointTypes.FSPIOP_CALLBACK_URL_TPP_REQ_SERVICE} endpoint found for tppConsents ${consentId} for ${Enum.Http.Headers.FSPIOP.DESTINATION}`, method.toUpperCase() !== Enum.Http.RestMethods.GET && method.toUpperCase() !== Enum.Http.RestMethods.DELETE ? payloadLocal : undefined, source)
     }
     const url = Mustache.render(endpoint + path, {
       ID: consentId
