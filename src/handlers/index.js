@@ -36,10 +36,15 @@ const tppAccountsIdGet = require('./tppAccounts/{ID}/{SignedChallenge}')
 const tppAccountsId = require('./tppAccounts/{ID}')
 const tppAccountsErrorByID = require('./tppAccounts/{ID}/error')
 const tppAccountRequestErrorByID = require('./tppAccountRequest/{ID}/error')
+const tppConsents = require('./tppConsents')
+const tppConsentsId = require('./tppConsents/{ID}')
 const health = require('./health')
 
 module.exports = {
   HealthGet: health.get,
+  PostConsents: tppConsents.post,
+  GetConsent: tppConsentsId.get,
+  DeleteConsentByID: tppConsentsId.delete,
   NotifyErrorAccountRequest: tppAccountRequestErrorByID.put,
   GetAccountRequest: tppAccountRequestId.get,
   UpdateAccountRequest: tppAccountRequestId.put,
