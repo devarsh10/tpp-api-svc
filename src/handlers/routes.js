@@ -167,6 +167,33 @@ const APIRoutes = (api) => [
       tags: ['api', 'tppAccounts', 'sampled'],
       description: 'PUT Thirdparty Accounts error by ID'
     }
+  },
+  {
+    method: 'POST',
+    path: '/tppConsents',
+    handler: (req, h) => handleRequest(api, req, h),
+    config: {
+      tags: ['api', 'tppConsents', 'sampled'],
+      description: 'POST Thirdparty Consents'
+    }
+  },
+  {
+    method: 'GET',
+    path: '/tppConsents/{ID}',
+    handler: (req, h) => handleRequest(api, req, h),
+    config: {
+      tags: ['api', 'tppConsents', 'sampled'],
+      description: 'GET Thirdparty Consents by ID'
+    }
+  },
+  {
+    method: 'DELETE',
+    path: '/tppConsents/{ID}',
+    handler: (req, h) => handleRequest(api, req, h),
+    config: {
+      tags: ['api', 'tppConsents', 'sampled'],
+      description: 'DELETE Thirdparty Consents by ID'
+    }
   }
 ]
 
